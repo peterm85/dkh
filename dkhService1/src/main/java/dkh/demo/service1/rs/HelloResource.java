@@ -18,6 +18,6 @@ public class HelloResource {
 	
 	@GetMapping
 	public ResponseEntity<String> greetings() {
-		return new ResponseEntity<>("Hola "+coreservice.getName(), HttpStatus.OK);
+		return new ResponseEntity<>(coreservice.getMessage(), HttpStatus.OK);
 	}
 }

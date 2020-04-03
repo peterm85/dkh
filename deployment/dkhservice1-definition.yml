@@ -1,3 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dkhservice1-config
+data:
+  showHostname : "true"
+  DKHSERVICE2_PATH : "http://dkhservice2-svc:8080"
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -6,7 +16,7 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      type: back-end
+      app-name: dkhservice1
   
   strategy:
     type: RollingUpdate
@@ -19,22 +29,30 @@ spec:
       name: dkhservice1-pod
       labels:
         type: back-end
+        app-name: dkhservice1
         language: java
     spec:
       containers:
       - name: dkhservice1
-        image: petermichael85/dkhservice1:0.0.2
+        image: petermichael85/dkhservice1:0.0.3
+        #imagePullPolicy: Always
         ports:
         - name: default-port
           containerPort: 8080
         env:
-        - name: DKHSERVICE2_PATH
-          value: "http://dkhservice2-svc:8080"
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name 
+        envFrom:
+        - configMapRef:
+            name: dkhservice1-config
+        
         readinessProbe:
           httpGet:
             path: /live/healthy
             port: default-port
-          initialDelaySeconds: 40
+          initialDelaySeconds: 60
           periodSeconds: 5
           failureThreshold: 3
         livenessProbe:
@@ -59,7 +77,7 @@ metadata:
   name: dkhservice1-svc
 spec:
   selector:
-    type: back-end
+    app-name: dkhservice1
   type: NodePort
   ports:
   - targetPort: 8080
@@ -71,4 +89,5 @@ spec:
 # kubectl get node -o wide
 #
 # http://node-ip:30008/hello
+# http://172.17.135.44:30008/hello
 #

@@ -6,7 +6,7 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      type: back-end
+      app-name: dkhservice2
   
   strategy:
     type: RollingUpdate
@@ -19,11 +19,13 @@ spec:
       name: dkhservice2-pod
       labels:
         type: back-end
+        app-name: dkhservice2
         language: java
     spec:
       containers:
       - name: dkhservice2
         image: petermichael85/dkhservice2:0.0.1
+        #imagePullPolicy: Always
         ports:
         - name: default-port
           containerPort: 8081
@@ -31,7 +33,7 @@ spec:
           httpGet:
             path: /live/healthy
             port: default-port
-          initialDelaySeconds: 40
+          initialDelaySeconds: 60
           periodSeconds: 5
           failureThreshold: 3
         livenessProbe:
@@ -48,6 +50,7 @@ spec:
           limits:
             cpu: .2
             memory: "500Mi"            
+
 ---
 
 apiVersion: v1
@@ -56,7 +59,7 @@ metadata:
   name: dkhservice2-svc
 spec:
   selector:
-    type: back-end
+    app-name: dkhservice2
   type: NodePort
   ports:
   - targetPort: 8081
