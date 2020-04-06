@@ -11,5 +11,5 @@ ENTRYPOINT java -jar dkhService2.jar
 ####################################################################
 # docker build -f Dockerfile -t petermichael85/dkhservice2:0.0.1 .
 #
-# docker push petermichael85/dkhservice2
+# docker push petermichael85/dkhservice2:0.0.1
 #

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>dkhService2</groupId>
 	<artifactId>dkhService2</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>dkh_service2</name>
 	<description>Service2 for Docker, K8s and Helm demo</description>
 
