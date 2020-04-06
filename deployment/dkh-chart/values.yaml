@@ -1,1 +1,40 @@
 
+dkhservice1:
+  replicaCount: 3
+  rollingUpdate:
+    maxUnavailable: 25%
+    maxSurge: 25%
+  image: petermichael85/dkhservice1:0.0.3
+  ports:
+    containerPort: 8080
+    servicePort: 8080
+    nodePort: 30008
+  conf:
+    showHostname: "true"
+    dkhservice2_path: "http://dkhservice2-svc:8080"
+  readinessProbe:
+    initialDelaySeconds: 60
+    periodSeconds: 5
+    failureThreshold: 3
+  livenessProbe:
+    initialDelaySeconds: 120
+    periodSeconds: 5
+    failureThreshold: 3
+
+dkhservice2:
+  replicaCount: 2
+  rollingUpdate:
+    maxUnavailable: 25%
+    maxSurge: 25%
+  image: petermichael85/dkhservice2:0.0.1
+  ports:
+    containerPort: 8081
+    servicePort: 8080
+  readinessProbe:
+    initialDelaySeconds: 60
+    periodSeconds: 5
+    failureThreshold: 3
+  livenessProbe:
+    initialDelaySeconds: 120
+    periodSeconds: 5
+    failureThreshold: 2

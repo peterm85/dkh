@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: dkhservice1-dpl
 spec:
-  replicas: 2
+  replicas: {{ .Values.dkhservice1.replicaCount }}
   selector:
     matchLabels:
       app-name: dkhservice1
@@ -11,8 +11,8 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 25%
-      maxSurge: 25%
+      maxUnavailable: {{ .Values.dkhservice1.rollingUpdate.maxUnavailable }}
+      maxSurge: {{ .Values.dkhservice1.rollingUpdate.maxSurge }}
   
   template:
     metadata:
@@ -24,35 +24,35 @@ spec:
     spec:
       containers:
       - name: dkhservice1
-        image: petermichael85/dkhservice1:0.0.3
+        image: {{ .Values.dkhservice1.image }}
         #imagePullPolicy: Always
         ports:
         - name: default-port
-          containerPort: 8080
+          containerPort: {{ .Values.dkhservice1.ports.containerPort }}
         env:
         - name: HOSTNAME
           valueFrom:
             fieldRef:
               fieldPath: metadata.name 
         - name: showHostname 
-          value: "true"
-        - name: DKHSERVICE2_PATH 
-          value: "http://dkhservice2-svc:8080"
+          value: "{{ .Values.dkhservice1.conf.showHostname }}"
+        - name: DKHSERVICE2_PATH
+          value: "{{ .Values.dkhservice1.conf.dkhservice2_path }}"
         
         readinessProbe:
           httpGet:
             path: /live/healthy
             port: default-port
-          initialDelaySeconds: 60
-          periodSeconds: 5
-          failureThreshold: 3
+          initialDelaySeconds: {{ .Values.dkhservice1.readinessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.dkhservice1.readinessProbe.periodSeconds }}
+          failureThreshold: {{ .Values.dkhservice1.readinessProbe.failureThreshold }}
         livenessProbe:
           httpGet:
             path: /live/healthy
             port: default-port
-          initialDelaySeconds: 120
-          periodSeconds: 5
-          failureThreshold: 2
+          initialDelaySeconds: {{ .Values.dkhservice1.livenessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.dkhservice1.livenessProbe.periodSeconds }}
+          failureThreshold: {{ .Values.dkhservice1.livenessProbe.failureThreshold }}
         resources:
           requests:
             cpu: .1
@@ -68,7 +68,7 @@ kind: Deployment
 metadata:
   name: dkhservice2-dpl
 spec:
-  replicas: 2
+  replicas: {{ .Values.dkhservice2.replicaCount }}
   selector:
     matchLabels:
       app-name: dkhservice2
@@ -76,8 +76,8 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 25%
-      maxSurge: 25%
+      maxUnavailable: {{ .Values.dkhservice2.rollingUpdate.maxUnavailable }}
+      maxSurge: {{ .Values.dkhservice2.rollingUpdate.maxSurge }}
   
   template:
     metadata:
@@ -89,25 +89,25 @@ spec:
     spec:
       containers:
       - name: dkhservice2
-        image: petermichael85/dkhservice2:0.0.1
+        image: {{ .Values.dkhservice2.image }}
         #imagePullPolicy: Always
         ports:
         - name: default-port
-          containerPort: 8081
+          containerPort: {{ .Values.dkhservice2.ports.containerPort }}
         readinessProbe:
           httpGet:
             path: /live/healthy
             port: default-port
-          initialDelaySeconds: 60
-          periodSeconds: 5
-          failureThreshold: 3
+          initialDelaySeconds: {{ .Values.dkhservice2.readinessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.dkhservice2.readinessProbe.periodSeconds }}
+          failureThreshold: {{ .Values.dkhservice2.readinessProbe.failureThreshold }}
         livenessProbe:
           httpGet:
             path: /live/healthy
             port: default-port
-          initialDelaySeconds: 120
-          periodSeconds: 5
-          failureThreshold: 2
+          initialDelaySeconds: {{ .Values.dkhservice2.livenessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.dkhservice2.livenessProbe.periodSeconds }}
+          failureThreshold: {{ .Values.dkhservice2.livenessProbe.failureThreshold }}
         resources:
           requests:
             cpu: .1
