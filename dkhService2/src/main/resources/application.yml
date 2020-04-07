@@ -1,5 +1,9 @@
 spring:
   application:
     name: dkhservice2
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/dkh
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PWD:my-secret-pw}
 server:
   port: 8081

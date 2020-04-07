@@ -3,3 +3,9 @@ spring:
     name: dkhservice1
 server:
   port: 8080
+
+dkhservice1:
+  showhostname: ${showHostname}
+  hostname: ${HOSTNAME}
+dkhservice2:
+  path: ${DKHSERVICE2_PATH}
