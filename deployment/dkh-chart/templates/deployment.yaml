@@ -34,10 +34,9 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name 
-        - name: showHostname 
-          value: "{{ .Values.dkhservice1.conf.showHostname }}"
-        - name: DKHSERVICE2_PATH
-          value: "{{ .Values.dkhservice1.conf.dkhservice2_path }}"
+        envFrom:
+        - configMapRef:
+            name: dkhservice1-config
         
         readinessProbe:
           httpGet:
@@ -94,6 +93,9 @@ spec:
         ports:
         - name: default-port
           containerPort: {{ .Values.dkhservice2.ports.containerPort }}
+        envFrom:
+        - secretRef:
+            name: mysql-sec
         readinessProbe:
           httpGet:
             path: /live/healthy

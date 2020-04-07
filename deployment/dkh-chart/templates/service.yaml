@@ -25,3 +25,16 @@ spec:
   - targetPort: {{ .Values.dkhservice2.ports.containerPort }}
     port: {{ .Values.dkhservice2.ports.servicePort }}
 
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-svc
+spec:
+  selector:
+    app-name: mysql
+  type: NodePort
+  ports:
+  - targetPort: {{ .Values.mysql.ports.containerPort }}
+    port: {{ .Values.mysql.ports.servicePort }}

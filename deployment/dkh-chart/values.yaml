@@ -4,7 +4,7 @@ dkhservice1:
   rollingUpdate:
     maxUnavailable: 25%
     maxSurge: 25%
-  image: petermichael85/dkhservice1:0.0.3
+  image: petermichael85/dkhservice1:0.0.4
   ports:
     containerPort: 8080
     servicePort: 8080
@@ -26,7 +26,7 @@ dkhservice2:
   rollingUpdate:
     maxUnavailable: 25%
     maxSurge: 25%
-  image: petermichael85/dkhservice2:0.0.1
+  image: petermichael85/dkhservice2:0.0.2
   ports:
     containerPort: 8081
     servicePort: 8080
@@ -38,3 +38,9 @@ dkhservice2:
     initialDelaySeconds: 120
     periodSeconds: 5
     failureThreshold: 2
+
+mysql:
+  image: mysql:8.0.19
+  ports:
+    containerPort: 3306
+    servicePort: 3306
