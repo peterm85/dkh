@@ -24,11 +24,14 @@ spec:
     spec:
       containers:
       - name: dkhservice2
-        image: petermichael85/dkhservice2:0.0.1
+        image: petermichael85/dkhservice2:0.0.2
         #imagePullPolicy: Always
         ports:
         - name: default-port
           containerPort: 8081
+        envFrom:
+        - secretRef:
+            name: mysql-sec
         readinessProbe:
           httpGet:
             path: /live/healthy
@@ -64,10 +67,3 @@ spec:
   ports:
   - targetPort: 8081
     port: 8080
-  
-
-###################################
-# 
-#
-# 
-#

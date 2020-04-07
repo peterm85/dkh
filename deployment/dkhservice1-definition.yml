@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: dkhservice1
-        image: petermichael85/dkhservice1:0.0.3
+        image: petermichael85/dkhservice1:0.0.4
         #imagePullPolicy: Always
         ports:
         - name: default-port

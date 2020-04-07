@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql
+  labels:
+    type: bbdd
+    app-name: mysql
+spec:
+  containers:
+  - name: mysql
+    image: mysql:8.0.19
+    ports:
+     - containerPort: 3306
+    env:
+     - name: MYSQL_ROOT_PASSWORD
+       valueFrom:
+         secretKeyRef:
+           name: mysql-sec
+           key: MYSQL_PWD
+     - name: MYSQL_DATABASE
+       valueFrom:
+         secretKeyRef:
+           name: mysql-sec
+           key: MYSQL_DATABASE
+    volumeMounts:
+     - name: mysql-data-vol
+       mountPath: /var/lib/mysql
+      
+  volumes:
+  - name: mysql-data-vol
+    persistentVolumeClaim:
+      claimName: claim-mysql
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-svc
+spec:
+  selector:
+    app-name: mysql
+  type: NodePort
+  ports:
+  - targetPort: 3306
+    port: 3306
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: claim-mysql
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+    
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv0001
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  hostPath:
+    path: C:\tmp\kubernetes\mysqldata
