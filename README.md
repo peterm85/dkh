@@ -1,18 +1,16 @@
 # Getting Started
 
 ### Reference Documentation
-For further reference, please consider the following sections:
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.3.0.M3/maven-plugin/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.3.0.M3/maven-plugin/html/#build-image)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/htmlsingle/#using-boot-devtools)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
+* Java 11
+* Spring Boot 2.3.0.M3
+* Maven 4.0.0
+* Docker Engine 19.03.5
+* Docker Compose 1.24.1
+* Kubernetes 1.14.8
+* Helm 3
 
-### Guides
-The following guides illustrate how to use some features concretely:
+### Esquema
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
+![Esquema](https://github.com/peterm85/dkh/dkh-schema.png)
 
