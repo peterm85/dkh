@@ -18,6 +18,11 @@
 
 ### DkhService1
 
+Microservicio encargado de saludar e identificar desde qué host se realiza (localhost, docker, pod de kubernetes)
+
+End-points:
+* hello 
+
 ### DkhService2
 
 ### MySql
