@@ -1,0 +1,2 @@
+# Ignore Spring Contract stubs
+/target/dkhService2*-stubs.jar

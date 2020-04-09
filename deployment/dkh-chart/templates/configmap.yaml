@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dkhservice1-config
+data:
+  showHostname : "{{ .Values.dkhservice1.conf.showHostname }}"
+  DKHSERVICE2_PATH : "{{ .Values.dkhservice1.conf.dkhservice2_path }}"
