@@ -12,5 +12,5 @@
 
 ### Esquema
 
-![Esquema](https://github.com/peterm85/dkh/dkh-schema.png)
+![Esquema](https://github.com/peterm85/dkh/blob/master/dkh-schema.PNG)
 
