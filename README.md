@@ -1,6 +1,6 @@
 # Getting Started
 
-### Reference Documentation
+## Reference Documentation
 
 * Java 11
 * Spring Boot 2.3.0.M3
@@ -10,16 +10,16 @@
 * Kubernetes 1.14.8
 * Helm 3
 
-### Esquema
+## Esquema
 
 ![Esquema](https://github.com/peterm85/dkh/blob/master/dkh-schema.PNG)
 
 ## Componentes
 
-# DkhService1
+### DkhService1
 
-# DkhService2
+### DkhService2
 
-# MySql
+### MySql
 
-# CronJob
+### CronJob
