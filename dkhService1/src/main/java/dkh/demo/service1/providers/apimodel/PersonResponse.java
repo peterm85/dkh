@@ -1,4 +1,4 @@
-package dkh.demo.service1.providers.data;
+package dkh.demo.service1.providers.apimodel;
 
 public class PersonResponse {
 	private String name;
@@ -24,4 +24,8 @@ public class PersonResponse {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
+	
+	public static PersonResponse notFound() {
+		return new PersonResponse("Desconocido", "");
+	} 
 }

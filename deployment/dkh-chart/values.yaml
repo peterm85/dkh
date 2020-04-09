@@ -4,7 +4,7 @@ dkhservice1:
   rollingUpdate:
     maxUnavailable: 25%
     maxSurge: 25%
-  image: petermichael85/dkhservice1:0.0.4
+  image: petermichael85/dkhservice1:0.0.5
   ports:
     containerPort: 8080
     servicePort: 8080
@@ -26,7 +26,7 @@ dkhservice2:
   rollingUpdate:
     maxUnavailable: 25%
     maxSurge: 25%
-  image: petermichael85/dkhservice2:0.0.2
+  image: petermichael85/dkhservice2:0.0.3
   ports:
     containerPort: 8081
     servicePort: 8080

@@ -23,4 +23,4 @@ appVersion: 0.0.4
 
 ######################################
 # helm install dkh-chart C:\workspaces\workspaceGh\dkh\deployment\dkh-chart
-#
+# helm upgrade dkh-chart C:\workspaces\workspaceGh\dkh\deployment\dkh-chart

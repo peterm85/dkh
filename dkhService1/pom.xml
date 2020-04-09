@@ -8,14 +8,16 @@
 		<version>2.3.0.M3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>externalprovider</groupId>
+	<groupId>dkh.demo.dkhService</groupId>
 	<artifactId>dkhService1</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 	<name>dkh_service1</name>
 	<description>Service1 for Docker, K8s and Helm demo</description>
 
 	<properties>
 		<java.version>11</java.version>
+		<spring-openfeign.version>2.1.1.RELEASE</spring-openfeign.version>
+		<spring-contract.version>2.2.2.RELEASE</spring-contract.version>
 	</properties>
 
 	<dependencies>
@@ -23,6 +25,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			<version>${spring-openfeign.version}</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -30,6 +38,17 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
+		    <version>${spring-contract.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

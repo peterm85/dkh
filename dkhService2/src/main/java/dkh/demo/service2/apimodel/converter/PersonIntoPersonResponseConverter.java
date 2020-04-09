@@ -3,7 +3,7 @@ package dkh.demo.service2.apimodel.converter;
 import org.springframework.stereotype.Component;
 
 import dkh.demo.service2.apimodel.PersonResponse;
-import dkh.demo.service2.repository.data.Person;
+import dkh.demo.service2.repository.domain.Person;
 
 @Component
 public class PersonIntoPersonResponseConverter {

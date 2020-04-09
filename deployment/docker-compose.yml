@@ -5,7 +5,7 @@ networks:
   
 services:
   dkhservice1:
-    image: petermichael85/dkhservice1:0.0.4
+    image: petermichael85/dkhservice1:0.0.5
     build: ../dkhService1
     container_name: dkhservice1
     ports:
@@ -18,7 +18,7 @@ services:
      - backend
 
   dkhservice2:
-    image: petermichael85/dkhservice2:0.0.2
+    image: petermichael85/dkhservice2:0.0.3
     build: ../dkhService2
     container_name: dkhservice2
     ports:

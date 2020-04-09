@@ -6,8 +6,9 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class ProviderConfig {
+	
 	@Bean
 	public RestTemplate restTemplate() {
-	    return new RestTemplate();
+		return new RestTemplate();
 	}
 }

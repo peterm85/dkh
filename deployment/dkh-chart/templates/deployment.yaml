@@ -112,8 +112,8 @@ spec:
           failureThreshold: {{ .Values.dkhservice2.livenessProbe.failureThreshold }}
         resources:
           requests:
-            cpu: .1
-            memory: "256Mi"
-          limits:
             cpu: .2
+            memory: "500Mi"
+          limits:
+            cpu: .4
             memory: "500Mi"

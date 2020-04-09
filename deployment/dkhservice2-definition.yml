@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: dkhservice2
-        image: petermichael85/dkhservice2:0.0.2
+        image: petermichael85/dkhservice2:0.0.3
         #imagePullPolicy: Always
         ports:
         - name: default-port
@@ -48,10 +48,10 @@ spec:
           failureThreshold: 2
         resources:
           requests:
-            cpu: .1
-            memory: "256Mi"
-          limits:
             cpu: .2
+            memory: "500Mi"
+          limits:
+            cpu: .4
             memory: "500Mi"            
 
 ---

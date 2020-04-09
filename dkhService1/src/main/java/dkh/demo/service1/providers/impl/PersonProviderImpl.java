@@ -5,11 +5,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import dkh.demo.service1.providers.Service1Provider;
-import dkh.demo.service1.providers.data.PersonResponse;
+import dkh.demo.service1.providers.PersonProvider;
+import dkh.demo.service1.providers.apimodel.PersonResponse;
 
 @Component
-public class Service1ProviderImpl implements Service1Provider{
+public class PersonProviderImpl implements PersonProvider{
 	
 	@Autowired
     private RestTemplate restTemplate;
@@ -22,5 +22,4 @@ public class Service1ProviderImpl implements Service1Provider{
 		return restTemplate.getForEntity(path.concat("/person/1"), PersonResponse.class)
 						   .getBody();
 	}
-
 }
