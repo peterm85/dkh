@@ -14,3 +14,12 @@
 
 ![Esquema](https://github.com/peterm85/dkh/blob/master/dkh-schema.PNG)
 
+## Componentes
+
+# DkhService1
+
+# DkhService2
+
+# MySql
+
+# CronJob
