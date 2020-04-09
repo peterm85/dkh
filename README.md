@@ -23,8 +23,22 @@ Microservicio encargado de saludar e identificar desde qué host se realiza (loc
 End-points:
 * hello 
 
+Parametrización:
+* Activación/desactivación del mostrado de host
+
 ### DkhService2
+
+Microservicio-api encargado de la gestión de Personas en la base de datos
+
+End-points:
+* person/{id}
 
 ### MySql
 
+Base de datos para almacenar personas
+
+Credenciales de accesos almacenadas en fichero un fichero Secret.
+Persistencia vinculada a un volumen de datos.
+
 ### CronJob
+
