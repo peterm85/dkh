@@ -9,7 +9,7 @@ COPY /target/dkhService2*.jar dkhService2.jar
 ENTRYPOINT java -jar dkhService2.jar
 
 ####################################################################
-# docker build -f Dockerfile -t petermichael85/dkhservice2:0.0.3 .
+# docker build -f Dockerfile -t petermichael85/dkhservice2:0.0.4 .
 #
-# docker push petermichael85/dkhservice2:0.0.3
+# docker push petermichael85/dkhservice2:0.0.4
 #

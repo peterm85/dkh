@@ -37,7 +37,8 @@ End-points:
 
 Base de datos para almacenar personas
 
-Credenciales de accesos almacenadas en fichero un fichero Secret.
+Credenciales de accesos almacenadas en un fichero Secret.
+
 Persistencia vinculada a un volumen de datos.
 
 ### CronJob

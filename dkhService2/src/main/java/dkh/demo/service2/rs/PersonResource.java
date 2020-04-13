@@ -1,5 +1,7 @@
 package dkh.demo.service2.rs;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,8 +25,8 @@ public class PersonResource {
 	
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
-	public PersonResponse getName() {
-		return new PersonResponse("Pedro","Rodriguez");
+	public List<PersonResponse> getName() {
+		return converter.convert( coreService.getAll() );
 	}
 	
 	@GetMapping("/{id}")

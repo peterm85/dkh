@@ -8,16 +8,15 @@
 		<version>2.3.0.M3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>dkh.demo.dkhService</groupId>
-	<artifactId>dkhService2</artifactId>
-	<version>0.0.4</version>
-	<name>dkh_service2</name>
+	<groupId>dkh.demo</groupId>
+	<artifactId>dkhCronjob</artifactId>
+	<version>0.0.1</version>
+	<name>dkh_cronjob</name>
 	<description>Service2 for Docker, K8s and Helm demo</description>
 
 	<properties>
 		<java.version>11</java.version>
-		<mysql.version>8.0.19</mysql.version>
-		<spring-contract.version>2.2.2.RELEASE</spring-contract.version>
+		<spring-openfeign.version>2.1.1.RELEASE</spring-openfeign.version>
 	</properties>
 
 	<dependencies>
@@ -26,14 +25,9 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-
-		<dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
-		    <scope>runtime</scope>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			<version>${spring-openfeign.version}</version>
 		</dependency>
 
 		<dependency>
@@ -42,17 +36,6 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-contract-verifier</artifactId>
-		    <version>${spring-contract.version}</version>
-		    <scope>test</scope>
-		</dependency>
-		<dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -72,18 +55,9 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-			    <groupId>org.springframework.cloud</groupId>
-			    <artifactId>spring-cloud-contract-maven-plugin</artifactId>
-			    <version>${spring-contract.version}</version>
-			    <extensions>true</extensions>
-			    <configuration>
-			        <baseClassForTests>dkh.demo.service2.BasePersonContractTest</baseClassForTests>
-			    </configuration>
-			</plugin>
 		</plugins>
 	</build>
-
+	
 	<repositories>
 		<repository>
 			<id>spring-milestones</id>
