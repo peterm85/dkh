@@ -1,6 +1,0 @@
-spring:
-  application:
-    name: dkhcronjob
-
-dkhservice2:
-  path: ${DKHSERVICE2_PATH}

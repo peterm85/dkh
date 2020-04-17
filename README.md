@@ -21,7 +21,7 @@
 Microservicio encargado de saludar e identificar desde qué host se realiza (localhost, docker, pod de kubernetes)
 
 End-points:
-* hello 
+* GET hello 
 
 Parametrización:
 * Activación/desactivación del mostrado de host
@@ -31,7 +31,8 @@ Parametrización:
 Microservicio-api encargado de la gestión de Personas en la base de datos
 
 End-points:
-* person/{id}
+* GET person
+* GET person/{id}
 
 ### MySql
 
@@ -41,5 +42,4 @@ Credenciales de accesos almacenadas en un fichero Secret.
 
 Persistencia vinculada a un volumen de datos.
 
-### CronJob
 
