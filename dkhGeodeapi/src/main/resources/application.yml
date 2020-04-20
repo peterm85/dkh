@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: dkhgeodeapi
+server:
+  port: 8083
+
+geodeserver:
+  host: ${GEODE_HOST:localhost}
+  port: ${GEODE_PORT:40404}
