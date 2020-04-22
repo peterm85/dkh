@@ -1,0 +1,15 @@
+FROM apachegeode/geode:1.12.0
+
+MAINTAINER Pedro Miguel Rodriguez <petermichael85@gmail.com>
+
+COPY ./scripts ./scripts
+
+WORKDIR /scripts
+
+ENTRYPOINT ./startServer.sh
+
+####################################################################
+# docker build -f Dockerfile -t petermichael85/dkhgeodeserver:0.0.1 .
+#
+# docker push petermichael85/dkhgeodeserver:0.0.1
+#

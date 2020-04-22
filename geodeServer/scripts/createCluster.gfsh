@@ -1,0 +1,4 @@
+start locator --name=locator
+start server --name=dkhgeode --locators=localhost[10334]
+create region --name=dkh --type=REPLICATE
+create region --name=tracking --type=REPLICATE

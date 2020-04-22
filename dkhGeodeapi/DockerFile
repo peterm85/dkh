@@ -1,0 +1,15 @@
+FROM openjdk:11.0.6-jre
+
+MAINTAINER Pedro Miguel Rodriguez <petermichael85@gmail.com>
+
+EXPOSE 8082
+
+COPY /target/dkhGeodeapi*.jar dkhGeodeapi.jar
+
+#ENTRYPOINT java -jar dkhGeodeapi.jar
+
+####################################################################
+# docker build -f Dockerfile -t petermichael85/dkhgeodeapi:0.0.1 .
+#
+# docker push petermichael85/dkhgeodeapi:0.0.1
+#

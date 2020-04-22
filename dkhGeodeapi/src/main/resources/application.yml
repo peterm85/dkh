@@ -2,7 +2,7 @@ spring:
   application:
     name: dkhgeodeapi
 server:
-  port: 8083
+  port: 8082
 
 geodeserver:
   host: ${GEODE_HOST:localhost}

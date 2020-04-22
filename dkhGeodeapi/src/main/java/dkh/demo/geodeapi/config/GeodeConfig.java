@@ -14,6 +14,8 @@ import dkh.demo.geodeapi.model.Tracking;
 @Configuration
 public class GeodeConfig {
 
+	private enum REGIONS { dkh, tracking }
+	
 	private ClientCache cache;
 	private Region<String,String> dkhRegion;
 	private Region<Integer,Tracking> trackingRegion;
@@ -25,8 +27,8 @@ public class GeodeConfig {
 	    this.cache = cf.setPdxReadSerialized(true).create();
 	    final ClientRegionFactory crf = cache.createClientRegionFactory(ClientRegionShortcut.PROXY);
 	    
-	    this.dkhRegion = crf.create("dkh");
-	    this.trackingRegion = crf.create("tracking");
+	    this.dkhRegion = crf.create(REGIONS.dkh.name());
+	    this.trackingRegion = crf.create(REGIONS.tracking.name());
 	}
 	
 	@Bean

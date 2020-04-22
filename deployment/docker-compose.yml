@@ -33,6 +33,20 @@ services:
     networks: 
      - backend
 
+  dkhgeodeapi:
+    image: petermichael85/dkhgeodeapi:0.0.1
+    build: ../dkhGeodeapi
+    container_name: dkhgeodeapi
+    ports:
+     - "8082:8082"
+    environment:
+     - GEODE_HOST=localhost
+     - GEODE_PORT=40404
+    depends_on:
+     - geode
+    networks: 
+     - backend
+
   mysql:
     image: mysql:8.0.19
     container_name: mysql
@@ -46,10 +60,21 @@ services:
      - "3306:3306"
     networks:
      - backend
-     
+
+  geode:
+    image: petermichael85/dkhgeodeserver:0.0.1
+    container_name: geode
+    ports:
+     - "10334:10334"
+     - "40404:40404"
+    networks:
+     - backend
+
 volumes:
   mysql-data-vol:
- 
+
+
+
 #####################################
 # docker-compose up
 #
@@ -64,3 +89,12 @@ volumes:
 #SHOW TABLES;
 #CREATE TABLE `person` (`Id` INTEGER, `Name` VARCHAR(20), `Surname` VARCHAR(20), `Age` INTEGER);
 #INSERT INTO person(Id, Name, Surname, Age) VALUES (1, 'Juan', 'Rodriguez', 35);
+
+
+
+#docker container run -it -p 10334:10334 -p 40404:40404 --name geode apachegeode/geode:1.12.0 /bin/bash
+#gfsh> list members
+#gfsh> create region --name=dkh --type=REPLICATE
+#gfsh> create region --name=tracking --type=REPLICATE
+#gfsh> describe region --name=dkh
+#gfsh> query --query='select e.key, e.value from /dkh.entries e'
