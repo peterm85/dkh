@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info:
+  version: '1.0.0'
+  title: Greetings Service
+  description: Greetings Service
+paths:
+  /hello:
+    get:
+      summary: Greetings
+      description: Greetings
+      tags:
+        - Greetings
+      x-contracts:
+        - contractId: 1
+          name: Hello_GET_OK
+      responses:
+        '200':
+          description: Get Greetings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelloResponse'
+          x-contracts:
+            - contractId: 1
+              body:
+                "message": "Hola Juan"
+              headers:
+                Content-Type: application/json;charset=UTF-8
+  /live/healthy:
+    get:
+      summary: Healthy
+      description: Healthy
+      tags:
+        - Healthy
+      x-contracts:
+        - contractId: 1
+          name: Healthy_GET_OK
+      responses:
+        '200':
+          description: Get if the application is alive
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+          x-contracts:
+            - contractId: 1
+              body: ''
+
+components:
+  schemas:
+    HelloResponse:
+      description: Hello Response
+      type: object
+      properties:
+        message:
+          type: string

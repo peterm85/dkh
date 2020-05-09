@@ -8,16 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dkh.demo.service1.coreservices.CoreService;
+import dkh.demo.service1.rs.apimodel.HelloResponse;
+import dkh.demo.service1.rs.converters.StringIntoHelloResponseConverter;
 
 @RestController
 @RequestMapping("/hello")
 public class HelloResource {
-
+	
 	@Autowired
 	private CoreService coreservice;
-	
+
 	@GetMapping
-	public ResponseEntity<String> greetings() {
-		return new ResponseEntity<>(coreservice.getMessage(), HttpStatus.OK);
+	public ResponseEntity<HelloResponse> greetings() {
+		return new ResponseEntity<>(StringIntoHelloResponseConverter.converter(coreservice.getMessage()), 
+				                    HttpStatus.OK);
 	}
 }
